@@ -12,6 +12,7 @@ import {
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { RiErrorWarningFill, RiInformationFill } from "react-icons/ri";
+import { useMutation } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
 import MainLayout from "../components/MainLayout";
 import MyToast from "../components/MyToast";
@@ -21,15 +22,13 @@ import {
 } from "../redux/actions/registration.action";
 
 const Register = () => {
-  const dispatch = useDispatch();
-  const { registrationSuccess, registrationFailed, registrationLoading } =
-    useSelector((state) => state.registration);
   const toast = useToast();
   const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  useEffect(() => {
-    if (registrationSuccess) {
+
+  const mutation = useMutation(actionCreate, {
+    onSuccess: async () => {
       toast({
         title: `User created`,
         variant: "left-accent",
@@ -37,10 +36,9 @@ const Register = () => {
         isClosable: true,
         position: "top-right",
       });
-      router.push("/users");
-    }
-
-    if (registrationFailed) {
+      return await router.push("/users");
+    },
+    onError: async () => {
       toast({
         title: `Email already exists`,
         variant: "left-accent",
@@ -48,10 +46,8 @@ const Register = () => {
         isClosable: true,
         position: "top-right",
       });
-    }
-
-    return () => dispatch(actionReset());
-  }, [dispatch, router, toast, registrationFailed, registrationSuccess]);
+    },
+  });
 
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
   const isErrorName = name === "";
@@ -62,7 +58,7 @@ const Register = () => {
       name: name,
       email: email,
     };
-    dispatch(actionCreate(data));
+    mutation.mutate(data);
   };
   return (
     <MainLayout
