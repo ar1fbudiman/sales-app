@@ -38,7 +38,7 @@ const MainLayout = ({ children, active, title, desc }) => {
             />
             <MenuItem
               active={active === "registration"}
-              url="/registration"
+              url="/register"
               icon={RiUserAddFill}
               name="Registration"
             />

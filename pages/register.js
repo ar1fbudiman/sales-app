@@ -20,7 +20,7 @@ import {
   actionReset,
 } from "../redux/actions/registration.action";
 
-const Registration = () => {
+const Register = () => {
   const dispatch = useDispatch();
   const { registrationSuccess, registrationFailed, registrationLoading } =
     useSelector((state) => state.registration);
@@ -122,4 +122,4 @@ const Registration = () => {
   );
 };
 
-export default Registration;
+export default Register;
