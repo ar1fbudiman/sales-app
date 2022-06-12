@@ -45,7 +45,7 @@ const Search = () => {
   const handleSearch = (input) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     if (regex.test(input)) {
-      const getArrData = users.data.data;
+      const getArrData = users;
       const filtered = getArrData.filter((item) => {
         return item.email === input;
       });

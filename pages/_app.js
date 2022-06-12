@@ -4,6 +4,8 @@ import { Provider } from "react-redux";
 import store from "../redux/store";
 import { QueryClientProvider, QueryClient, Query } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import "../styles/globals.css";
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

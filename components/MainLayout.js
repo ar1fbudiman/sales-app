@@ -49,7 +49,7 @@ const MainLayout = ({ children, active, title, desc }) => {
               name="Search"
             />
           </Flex>
-          <Flex width={"inherit"} flexDirection={"column"}>
+          <Flex width={"inherit"} flexDirection={"column"} maxWidth={"80%"}>
             <Flex
               flexDirection={"column"}
               padding={4}
@@ -64,7 +64,9 @@ const MainLayout = ({ children, active, title, desc }) => {
                 {desc}
               </Text>
             </Flex>
-            <Flex padding={4}>{children}</Flex>
+            <Flex padding={4} flexWrap={"nowrap"} overflowX={"auto"}>
+              {children}
+            </Flex>
           </Flex>
         </Flex>
       </Box>
