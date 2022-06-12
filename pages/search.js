@@ -14,8 +14,9 @@ import { useQuery } from "react-query";
 import MainLayout from "../components/MainLayout";
 import UserFound from "../components/search/UserFound";
 import UserNotFound from "../components/search/UserNotFound";
-import { actionFindUser, actionUsers } from "../redux/actions/search.action";
+import { actionFindUser } from "../redux/actions/search.action";
 import { FaTimesCircle } from "react-icons/fa";
+import { actionUsers } from "../redux/actions/users.action";
 const Search = () => {
   const [id, setId] = useState(null);
   const [search, setSearch] = useState(null);
