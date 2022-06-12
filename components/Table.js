@@ -3,10 +3,8 @@ import { Table, Thead, Tbody, Tr, Th, Td, chakra } from "@chakra-ui/react";
 import { useCallback, useMemo } from "react";
 import { useTable, useResizeColumns, useFlexLayout } from "react-table";
 import { FixedSizeList } from "react-window";
-import { usersColumns } from "./Columns";
 
-export default function Tables({ data }) {
-  const columns = useMemo(() => usersColumns, []);
+export default function Tables({ data, columns }) {
   const defaultColumn = useMemo(
     () => ({
       minWidth: 30,
