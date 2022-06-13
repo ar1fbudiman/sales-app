@@ -30,13 +30,12 @@ a {
 }
 
 .resizer {
-  display: inline-block;
-  background: grey;
-  width: 10px;
+  background: #d0d6dc;
+  width: 2px;
   height: 100%;
   position: absolute;
-  right: 0;
+  right: 3px;
   top: 0;
-  /* transform: translateX(50%); */
+  transform: translateX(50%);
   z-index: 1;
 }

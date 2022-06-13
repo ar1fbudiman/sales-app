@@ -1,4 +1,5 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
+import { useEffect, useMemo, useState } from "react";
 import {
   RiDashboardFill,
   RiMenu2Line,
@@ -6,21 +7,31 @@ import {
   RiUserFill,
   RiUserSearchFill,
 } from "react-icons/ri";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleMenu } from "../redux/actions/menu.action";
 import MenuItem from "./MenuItem";
 import MenuToggle from "./MenuToggle";
 import NavHeader from "./NavHeader";
 
 const MainLayout = ({ children, active, title, desc }) => {
+  const [menuHide, setMenuHide] = useState();
   const { isMenuHide } = useSelector((state) => state.menu);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    setMenuHide(isMenuHide);
+  }, []);
+
+  useEffect(() => {
+    setMenuHide(isMenuHide);
+  }, [isMenuHide]);
 
   return (
-    <Flex width={"100%"} height={"100%"}>
+    <Flex maxWidth={"100%"} height={"100%"} overflowX={"hidden"}>
       <NavHeader />
       <Box width={"100%"}>
         <Flex width={"100%"} paddingTop={"3.5em"}>
           <Flex
-            width={isMenuHide ? "3.5em" : "13.5em"}
+            width={menuHide ? "3.5em" : "13.5em"}
             height={"100vh"}
             borderRight={"1px"}
             borderRightColor={"#D0D6DC"}

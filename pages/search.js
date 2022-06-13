@@ -67,10 +67,9 @@ const Search = () => {
     <MainLayout active="search" title="Search User" desc="Search existing user">
       <Flex width={"50%"} flexDirection={"column"}>
         <InputGroup>
-          <InputLeftElement
-            pointerEvents="none"
-            children={<Icon as={RiSearch2Line} color="gray.300" />}
-          />
+          <InputLeftElement pointerEvents="none">
+            <Icon as={RiSearch2Line} color="gray.300" />
+          </InputLeftElement>
           <Input
             value={search}
             onChange={(e) => setSearch(e.target.value)}

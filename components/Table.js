@@ -47,7 +47,11 @@ export default function Tables({ data, columns }) {
           {headerGroups.map((headerGroup) => (
             <Tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
-                <Th {...column.getHeaderProps()}>
+                <Th
+                  border={"1px solid #d0d6dc"}
+                  background={"#f6f7fa"}
+                  {...column.getHeaderProps()}
+                >
                   {column.render("Header")}
                   <div {...column.getResizerProps()} className={`resizer`} />
                 </Th>
